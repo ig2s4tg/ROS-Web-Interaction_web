@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<script>
+  $(document).ready(function(){
+    $('.dropdown-toggle').dropdown()
+  });
+</script>
+{% endblock %}
+{% block content %}
+
+<div class="dropdown col-md-3">
+    <div class="dropdown-toggle" data-toggle="dropdown">
+      Select a topic to view
+    </div>
+
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+      <li class="dropdown-header">Dropdown header</li>
+      <li><a href="#">asds</a></li>
+      <li class="divider"></li>
+    </ul>
+
+</div>
+
+{% endblock %}

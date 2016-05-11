@@ -5,15 +5,11 @@
 
 {% endblock %}
 {% block content %}
-{% if session["name"] %}
-<h2>
-Hi, {{session["name"]}}! <br>
-</h2>
-<a href="/logout">forget me</a>
-{% else %}
-<form action="" method="post" name="index">
-{{form.name(placeholder="Sample Name")}}
-<input type="submit" value="Submit">
-</form>
-{% endif %}
+<h4> Select a robot to view </h4>
+<div class="row">
+{% for robot in robot_ips %}
+    <a href="/robot/{{robot}}">
+    <div class="col-md-6">{{robot}}</div>
+{% endfor %}
+</div>
 {% endblock %}
