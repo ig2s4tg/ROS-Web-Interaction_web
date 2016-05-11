@@ -6,21 +6,28 @@
   $(document).ready(function(){
     $('.dropdown-toggle').dropdown()
   });
+
+  $(function() {
+    var div = $('.topic-view');
+    var width = div.width();
+
+    div.css('height', width * (2/3));
+    $('.topic-select').css('height', width * (2/3));
+});
+
 </script>
 {% endblock %}
 {% block content %}
-
-<div class="dropdown col-md-3">
-    <div class="dropdown-toggle" data-toggle="dropdown">
-      Select a topic to view
-    </div>
-
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-      <li class="dropdown-header">Dropdown header</li>
-      <li><a href="#">asds</a></li>
-      <li class="divider"></li>
+<div class="robot-container">
+  <div class="topic-select container">
+    <ul class="list-group">
+      {{for }}
+      <li class="list-group-item">Second item</li>
+      <li class="list-group-item">Second item</li>
+      <li class="list-group-item">Third item</li>
     </ul>
+  </div>
 
+  <img class="topic-view" src="https://i.imgur.com/mGJI4WY.jpg"></img>
 </div>
-
 {% endblock %}

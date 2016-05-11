@@ -3,7 +3,7 @@ body            { font-family: sans-serif;
                   text-align: center;
                   color: #111;
 
-                  background: url("/static/bg.png");
+                  background: url("/static/geometry.png");
                   background-attachment: fixed;
 }
 
@@ -23,7 +23,20 @@ h3              { font-size: 3.3em;
 
 h4              { color: #5B9FE3;
                   font-size: 30px;
-                  padding-left: 40px;
+
+                  text-align: center;
+                }
+
+.error1         { font-family: 'Lora', serif;
+                  text-align: center;
+                  font-size: 3.6em;
+                  color:red;
+                }
+
+.error2         { font-family: 'Lora', serif;
+                  text-align: center;
+                  font-size: 2.3em;
+                  color:red;
                 }
 
 #content        { margin: 5% 5% 5% 5%;
@@ -38,6 +51,7 @@ h4              { color: #5B9FE3;
                 }
 
 .col-md-6       { font-family: 'Lora', serif;
+                  font-size: 2em;
                   padding: 30px 30px 30px 30px;
                   text-align: center;
                   background-color: #DDF;
@@ -56,16 +70,12 @@ a:hover         {
                   text-decoration: none;
                 }
 
-.dropdown-toggle{ font-family: 'Lora', serif;
-                  padding: 10px 10px 10px 10px;
-                  text-align: center;
-                  background-color: #DDF;
-                  border: solid;
-                  border-width: 1px;
-                  border-color: #AAF;
-
+.topic-select   { width: 33%;
+                  float: left;
+                  height: 300px;
+                  overflow-y: scroll;
                 }
 
-.dropdown-toggle:hover {
-                    background-color: #CCF;
+.topic-view     { width: 66%;
+                  float: right;
                 }

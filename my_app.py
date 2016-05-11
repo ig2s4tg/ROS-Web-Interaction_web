@@ -2,8 +2,13 @@ from flask import Flask, render_template, session, redirect, request, url_for
 from flask.ext.mobility import Mobility
 from flask.ext.mobility.decorators import mobile_template
 
+#for retrieving robot IPs
 import urllib2
 import json
+
+#for parsing HTML retreived from robot_ips
+from bs4 import BeautifulSoup
+
 
 app = Flask(__name__)
 Mobility(app)
@@ -25,12 +30,32 @@ def index(template):
 @app.route('/robot/<robot_name>')
 @mobile_template('{mobile/}robot.html')
 def robot(template, robot_name):
-	#no switch in python :'(
 	if robot_name.lower() in robot_ips.keys():
 		return render_template(template, robot_name=robot_name, robot_ip=robot_ips[robot_name.lower()])
 	else:
 		return "no robot named " + robot_name
 
+@app.route('/error')
+@mobile_template('{mobile/}error.html')
+def error(template):
+	return render_template(template)
+
+
+def ping_robot():
+	url = "http://" +  robot_ips[robot] + ":8080"
+	req = urllib2.Request(ip_url)
+	try:
+		response = urllib2.urlopen(req, timeout=5)
+	except urllib2.URLError:
+		return False
+	return True
+
+def get_topics(robot):
+	url = "http://" +  robot_ips[robot] + ":8080"
+	req = urllib2.Request(ip_url)
+	response = urllib2.urlopen(req)
+	result = response.read()
+	return
 
 if __name__ == "__main__":
     app.run(debug=True)
