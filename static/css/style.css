@@ -74,8 +74,13 @@ a:hover         {
                   float: left;
                   height: 300px;
                   overflow-y: scroll;
+                  font-size: 12px;
                 }
 
 .topic-view     { width: 66%;
                   float: right;
+                }
+
+.list-group-item{
+                  overflow-x: scroll;
                 }

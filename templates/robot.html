@@ -3,31 +3,62 @@
 {% block head %}
 {{ super() }}
 <script>
-  $(document).ready(function(){
-    $('.dropdown-toggle').dropdown()
-  });
 
-  $(function() {
-    var div = $('.topic-view');
-    var width = div.width();
 
-    div.css('height', width * (2/3));
-    $('.topic-select').css('height', width * (2/3));
+function equalize() {
+  var div = $('.topic-view');
+  var width = div.width();
+
+  div.css('height', width * (2/3));
+  $('.topic-select').css('height', width * (2/3));
+}
+
+
+$(document).ready(function(){
+  $('.dropdown-toggle').dropdown()
+  equalize();
+});
+
+
+
+$(window).resize(function () {
+  equalize();
+});
+
+$(document).ready(function() {
+    $(".img_change").click(function(event) {
+        $('.topic-view')[0].src = "http://{{robot_ip}}:8080/nav_kinect/" + event.target.innerText;
+
+        $( ".active" ).each(function() {
+          $( this ).removeClass("active");
+        });
+
+        $(event.target).toggleClass('active');
+
+
+    });
 });
 
 </script>
+
+<style>
+#content{ padding: 20px 20px 20px 5px;}
+</style>
+
+
 {% endblock %}
 {% block content %}
 <div class="robot-container">
   <div class="topic-select container">
     <ul class="list-group">
-      {{for }}
-      <li class="list-group-item">Second item</li>
-      <li class="list-group-item">Second item</li>
-      <li class="list-group-item">Third item</li>
+      {% for topic in topics %}
+      <div class="img_change">
+        <li class="list-group-item">{{"/".join(topic.split("/")[2:])}}</li>
+      </div>
+      {% endfor %}
     </ul>
   </div>
 
-  <img class="topic-view" src="https://i.imgur.com/mGJI4WY.jpg"></img>
+  <img class="topic-view" src="http://i.imgur.com/s2ZrxxI.png"></img>
 </div>
 {% endblock %}
