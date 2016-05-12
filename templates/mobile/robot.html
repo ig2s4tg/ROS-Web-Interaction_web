@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<script>
+
+
+function equalize() {
+  var div = $('.topic-view');
+  var width = div.width();
+
+  div.css('height', width;
+  $('.topic-select').css('height', width);
+}
+
+
+$(document).ready(function(){
+  $('.dropdown-toggle').dropdown()
+  equalize();
+});
+
+
+
+$(window).resize(function () {
+  equalize();
+});
+
+$(document).ready(function() {
+    $(".img_change").click(function(event) {
+        $('.topic-view')[0].src = "http://{{robot_ip}}:8080/nav_kinect/" + event.target.innerText;
+
+        $( ".active" ).each(function() {
+          $( this ).removeClass("active");
+        });
+
+        $(event.target).toggleClass('active');
+
+
+    });
+});
+
+</script>
+
+<style>
+#content{ padding: 20px 20px 20px 5px;}
+</style>
+
+
+{% endblock %}
+{% block content %}
+<div class="robot-container">
+  <img class="topic-view" src="http://i.imgur.com/s2ZrxxI.png"></img>
+
+  <div class="topic-select container">
+    <ul class="list-group">
+      {% for topic in topics %}
+      <div class="img_change">
+        <li class="list-group-item">{{"/".join(topic.split("/")[2:])}}</li>
+      </div>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

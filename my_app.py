@@ -17,9 +17,9 @@ app.secret_key = 'CHANGE_ME'
 
 ip_url = "http://nixons-head.csres.utexas.edu:7979/hostsjson"
 req = urllib2.Request(ip_url)
-response = urllib2.urlopen(req)
-result = response.read()
-#result = '{"bender":"101.101.101.101"}'
+#response = urllib2.urlopen(req)
+#result = response.read()
+result = '{"bender":"101.101.101.101"}'
 robot_ips = json.loads(result)
 
 ### ROUTING ###
